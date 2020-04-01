@@ -137,7 +137,7 @@ Al final habrá un botón que confirmara la recarga y al tener éxito en ella, s
 
 ### **Diagramas**
 
-
+![Diagrama de clases](https://raw.githubusercontent.com/agustincperalta/APIWalletRecargas/master/diagrama.png)
 
 *   Cliente
 *   Operacion, Recarga
