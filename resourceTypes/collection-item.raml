@@ -1,0 +1,12 @@
+#%RAML 1.0 ResourceType
+
+get:
+    responses:
+        200:
+            body:
+                application/json:
+        404:
+            body:
+                application/json:
+                    example: |
+                        {"message": "<<resourcePathName>> no encontrado." }
