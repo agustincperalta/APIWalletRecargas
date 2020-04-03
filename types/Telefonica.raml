@@ -1,0 +1,23 @@
+#%RAML 1.0 Library
+
+types:
+    Telefonica:
+        type: object
+        properties:
+            id: 
+                type: integer
+                minimum: 0
+                description: |
+                    Identificador de Telefonica.
+                required: true
+            nombre:
+                type: string
+                description: |
+                    Nombre de la Telefonica.
+                required: true
+            montos: 
+                type: integer[]
+                description: |
+                    Montos que soporta la telefonica para recarga.
+                required: true
+            
