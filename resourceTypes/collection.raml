@@ -1,67 +1,81 @@
 #%RAML 1.0 ResourceType
 
-description: Coleccion de <<resourcePathName>> en el sistema.
+description: Collection of <<resourcePathName>> available in the system.
 get:
     description: |
-        Obtiene una lista de <<resourcePathName>> en el sistema.
+        Obtains a list of <<resourcePathName>> available in the system.
     responses:
         200:
             description: OK
             body:
                 application/json:
-                    type: <<collectionType>>[]
+                    type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>[]
                     example: <<collectionExample>>
+        204:
+            description: Not found
+            body:
+                application/json:
+                    example: {"message": "<<resourcePathName>> returned no results."}
         400:
             description: Petition error
             body:
                 application/json:
-                    example: {"message":"Error de petición."}
+                    example: {"message":"Petition error."}
         401:
             description: Unauthorized
             body:
                 application/json:
-                    example: {"message":"Error de autorización."}
+                    example: {"message":"Unauthorized, please login."}
         403:
             description: Access denied
             body:
                 application/json:
-                    example: {"message":"Acceso denegado."}
+                    example: {"message":"Access denied."}
         404:
             description: Not found
             body:
                 application/json:
-                    example: {"message": "No hay <<resourcePathName>> en el sistema."}
+                    example: {"message": "<<resourcePathName>> returned no results."}
         500:
             description: Internal server error
             body:
                 application/json:
-                    example: {"message":"Error del servidor."}
+                    example: {"message":"Internal server error."}
 post:
     description: |
-        Crea un nuevo objeto <<resourcePathName>>.
+        Creates a new <<resourcePathName|!singularize>> in the system.
     body:
         application/json:
-            type: <<collectionType>>
+            type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
             example: <<itemExample>>
     responses:
         201:
             body:
                 application/json:
-                    type: <<collectionType>>
+                    type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
                     example: <<itemExample>>
         400:
+            description: Petition error
             body:
                 application/json:
-                    example: {"message":"Error de petición."}
+                    example: {"message":"Petition error."}
         401:
+            description: Unauthorized
             body:
                 application/json:
-                    example: {"message":"Error de autorización."}
+                    example: {"message":"Unauthorized, please login."}
         403:
+            description: Access denied
             body:
                 application/json:
-                    example: {"message":"Acceso denegado."}
+                    example: {"message":"Access denied."}
+        404:
+            description: Not found
+            body:
+                application/json:
+                    example: {"message": "<<resourcePathName>> returned no results."}
         500:
+            description: Internal server error
             body:
                 application/json:
-                    example: {"message":"Error del servidor."}
+                    example: {"message":"Internal server error."}

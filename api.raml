@@ -5,60 +5,41 @@ baseUri: http://api.walletgft.com
 
 uses:
     _common: types/_common.raml
-    telefonica: types/Telefonica.raml
-    banco: types/Banco.raml
+    provider: types/provider.raml
+    bank: types/bank.raml
 
 resourceTypes:
   collection: !include resourceTypes/collection.raml
   collection-item: !include resourceTypes/collection-item.raml
 
-/bancos:
-    type: collection
-    get:
-        responses:
-            200:
-                body:
-                    application/json:
-                        type: banco.Banco[]
-                        example: !include examples/bancos.json
-    post:
-        body:
-            application/json:
-                type: banco.Banco
-                example: !include examples/banco.json
-        responses:
-            201:
-                body:
-                    application/json:
-                        type: banco.Banco
-                        example: !include examples/banco.json
-    /{banco-id}:
-        type: collection-item
+/banks:
+    type: 
+        collection:
+            collectionExample: !include examples/banks.json
+            itemExample: !include examples/bank.json
+    /{bank-id}:
+        type: 
+            collection-item:
+                itemExample: !include examples/bank.json
         uriParameters: 
-            banco-id: 
+            bank-id: 
                 type: _common.id
                 description: |
                     Identificador del Banco.
 
 
-/telefonicas:
+/providers:
     type: 
         collection:
-            collectionType: telefonica.Telefonica
-            collectionExample: !include examples/telefonicas.json
-            itemExample: !include examples/telefonica.json
+            collectionExample: !include examples/providers.json
+            itemExample: !include examples/provider.json
 
-    /{telefonica-id}:
-        type: collection-item
+    /{provider-id}:
+        type: 
+            collection-item:
+                itemExample: !include examples/provider.json
         uriParameters:
-            telefonica-id:
+            provider-id:
                 type: _common.id
                 description: |
                     Identificador de la Telefonica.
-        get:
-            responses:
-                200:
-                    body:
-                        application/json:
-                            type: telefonica.Telefonica
-                            example: !include examples/telefonica.json
