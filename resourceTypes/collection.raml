@@ -45,29 +45,14 @@ post:
           example: <<itemExample>>
     400:
       description: Petition error
-      body:
-        application/json:
-          example: {"message":"Petition error."}
     401:
       description: Unauthorized
-      body:
-        application/json:
-          example: {"message":"Unauthorized, please login."}
     403:
       description: Access denied
-      body:
-        application/json:
-          example: {"message":"Access denied."}
     404:
       description: Not found
-      body:
-        application/json:
-          example: {"message": "<<resourcePathName>> returned no results."}
     500:
       description: Internal server error
-      body:
-        application/json:
-          example: {"message":"Internal server error."}
 
 put:
   description: Method not allowed
