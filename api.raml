@@ -12,11 +12,17 @@ resourceTypes:
   collection: !include resourceTypes/collection.raml
   collection-item: !include resourceTypes/collection-item.raml
 
+traits:
+  searchable: !include traits/searchable.raml
+  pageable: !include traits/pageable.raml
+  sortable: !include traits/sortable.raml
+
 /banks:
   type:
-  collection:
-    collectionExample: !include examples/banks.json
-    itemExample: !include examples/bank.json
+    collection:
+      collectionExample: !include examples/banks.json
+      itemExample: !include examples/bank.json
+  is: [pageable, sortable:{fieldsList: "id, name"}, searchable: {description: "with valid searchable fields: id, name", example: "[\"name\", \"Santan\", \"like\"]"}]
   /{bank-id}:
     type:
       collection-item:
@@ -33,6 +39,7 @@ resourceTypes:
     collection:
       collectionExample: !include examples/providers.json
       itemExample: !include examples/provider.json
+  is: [pageable, sortable:{fieldsList: "id, name"}, searchable: {description: "with valid searchable fields: id, name", example: "[\"name\", \"Santan\", \"like\"]"}]
 
   /{provider-id}:
     type:
