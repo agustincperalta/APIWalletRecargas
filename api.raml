@@ -4,42 +4,42 @@ version: v0
 baseUri: http://api.walletgft.com
 
 uses:
-    _common: types/_common.raml
-    provider: types/provider.raml
-    bank: types/bank.raml
+  _common: types/_common.raml
+  provider: types/provider.raml
+  bank: types/bank.raml
 
 resourceTypes:
   collection: !include resourceTypes/collection.raml
   collection-item: !include resourceTypes/collection-item.raml
 
 /banks:
-    type: 
-        collection:
-            collectionExample: !include examples/banks.json
-            itemExample: !include examples/bank.json
-    /{bank-id}:
-        type: 
-            collection-item:
-                itemExample: !include examples/bank.json
-        uriParameters: 
-            bank-id: 
-                type: _common.id
-                description: |
-                    Bank Identifier.
+  type:
+  collection:
+    collectionExample: !include examples/banks.json
+    itemExample: !include examples/bank.json
+  /{bank-id}:
+    type:
+      collection-item:
+        itemExample: !include examples/bank.json
+    uriParameters:
+      bank-id:
+        type: _common.id
+        description: |
+          Bank Identifier.
 
 
 /providers:
-    type: 
-        collection:
-            collectionExample: !include examples/providers.json
-            itemExample: !include examples/provider.json
+  type:
+    collection:
+      collectionExample: !include examples/providers.json
+      itemExample: !include examples/provider.json
 
-    /{provider-id}:
-        type: 
-            collection-item:
-                itemExample: !include examples/provider.json
-        uriParameters:
-            provider-id:
-                type: _common.id
-                description: |
-                    Provider identifier.
+  /{provider-id}:
+    type:
+      collection-item:
+        itemExample: !include examples/provider.json
+    uriParameters:
+      provider-id:
+        type: _common.id
+        description: |
+          Provider identifier.

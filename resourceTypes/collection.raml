@@ -2,80 +2,80 @@
 
 description: Collection of <<resourcePathName>> available in the system.
 get:
-    description: |
-        Obtains a list of <<resourcePathName>> available in the system.
-    responses:
-        200:
-            description: OK
-            body:
-                application/json:
-                    type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>[]
-                    example: <<collectionExample>>
-        204:
-            description: Not found
-            body:
-                application/json:
-                    example: {"message": "<<resourcePathName>> returned no results."}
-        400:
-            description: Petition error
-            body:
-                application/json:
-                    example: {"message":"Petition error."}
-        401:
-            description: Unauthorized
-            body:
-                application/json:
-                    example: {"message":"Unauthorized, please login."}
-        403:
-            description: Access denied
-            body:
-                application/json:
-                    example: {"message":"Access denied."}
-        404:
-            description: Not found
-            body:
-                application/json:
-                    example: {"message": "<<resourcePathName>> returned no results."}
-        500:
-            description: Internal server error
-            body:
-                application/json:
-                    example: {"message":"Internal server error."}
-post:
-    description: |
-        Creates a new <<resourcePathName|!singularize>> in the system.
-    body:
+  description: |
+    Obtains a list of <<resourcePathName>> available in the system.
+  responses:
+    200:
+      description: OK
+      body:
         application/json:
-            type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
-            example: <<itemExample>>
-    responses:
-        201:
-            body:
-                application/json:
-                    type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
-                    example: <<itemExample>>
-        400:
-            description: Petition error
-            body:
-                application/json:
-                    example: {"message":"Petition error."}
-        401:
-            description: Unauthorized
-            body:
-                application/json:
-                    example: {"message":"Unauthorized, please login."}
-        403:
-            description: Access denied
-            body:
-                application/json:
-                    example: {"message":"Access denied."}
-        404:
-            description: Not found
-            body:
-                application/json:
-                    example: {"message": "<<resourcePathName>> returned no results."}
-        500:
-            description: Internal server error
-            body:
-                application/json:
-                    example: {"message":"Internal server error."}
+          type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>[]
+          example: <<collectionExample>>
+    204:
+      description: Not found
+      body:
+        application/json:
+          example: {"message": "<<resourcePathName>> returned no results."}
+    400:
+      description: Petition error
+      body:
+        application/json:
+          example: {"message":"Petition error."}
+    401:
+      description: Unauthorized
+      body:
+        application/json:
+          example: {"message":"Unauthorized, please login."}
+    403:
+      description: Access denied
+      body:
+        application/json:
+          example: {"message":"Access denied."}
+    404:
+      description: Not found
+      body:
+        application/json:
+          example: {"message": "<<resourcePathName>> returned no results."}
+    500:
+      description: Internal server error
+      body:
+        application/json:
+          example: {"message":"Internal server error."}
+post:
+  description: |
+    Creates a new <<resourcePathName|!singularize>> in the system.
+  body:
+    application/json:
+      type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
+      example: <<itemExample>>
+  responses:
+    201:
+      body:
+        application/json:
+          type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
+          example: <<itemExample>>
+    400:
+      description: Petition error
+      body:
+        application/json:
+          example: {"message":"Petition error."}
+    401:
+      description: Unauthorized
+      body:
+        application/json:
+          example: {"message":"Unauthorized, please login."}
+    403:
+      description: Access denied
+      body:
+        application/json:
+          example: {"message":"Access denied."}
+    404:
+      description: Not found
+      body:
+        application/json:
+          example: {"message": "<<resourcePathName>> returned no results."}
+    500:
+      description: Internal server error
+      body:
+        application/json:
+          example: {"message":"Internal server error."}

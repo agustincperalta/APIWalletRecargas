@@ -2,37 +2,37 @@
 
 description: <<resourcePathName|!singularize>> Item Collection.
 get:
-    description: |
-        Obtains a <<resourcePathName|!singularize>> object.
-    responses:
-        200:
-            description: OK
-            body:
-                application/json:
-                    type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
-                    example: <<itemExample>>
-        400:
-            description: Petition error
-            body:
-                application/json:
-                    example: {"message":"Petition error."}
-        401:
-            description: Unauthorized
-            body:
-                application/json:
-                    example: {"message":"Authorization error."}
-        403:
-            description: Access denied
-            body:
-                application/json:
-                    example: {"message":"Access denied."}
-        404:
-            description: Not found
-            body:
-                application/json:
-                    example: {"message": "<<resourcePathName|!singularize>> not found."}
-        500:
-            description: Internal server error
-            body:
-                application/json:
-                    example: {"message":"Internal server error."}
+  description: |
+    Obtains a <<resourcePathName|!singularize>> object.
+  responses:
+    200:
+      description: OK
+      body:
+        application/json:
+          type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
+          example: <<itemExample>>
+    400:
+      description: Petition error
+      body:
+        application/json:
+          example: {"message":"Petition error."}
+    401:
+      description: Unauthorized
+      body:
+        application/json:
+          example: {"message":"Authorization error."}
+    403:
+      description: Access denied
+      body:
+        application/json:
+          example: {"message":"Access denied."}
+    404:
+      description: Not found
+      body:
+        application/json:
+          example: {"message": "<<resourcePathName|!singularize>> not found."}
+    500:
+      description: Internal server error
+      body:
+        application/json:
+          example: {"message":"Internal server error."}
