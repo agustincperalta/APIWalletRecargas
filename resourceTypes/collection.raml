@@ -9,50 +9,39 @@ get:
       description: OK
       body:
         application/json:
-          type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>[]
+          #type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>[]
+          type: <<type>>[]
           example: <<collectionExample>>
     204:
-      description: Not found
+      description: No Content
       body:
         application/json:
-          example: {"message": "<<resourcePathName>> returned no results."}
+          type: any
+          example: []
     400:
       description: Petition error
-      body:
-        application/json:
-          example: {"message":"Petition error."}
     401:
       description: Unauthorized
-      body:
-        application/json:
-          example: {"message":"Unauthorized, please login."}
     403:
       description: Access denied
-      body:
-        application/json:
-          example: {"message":"Access denied."}
     404:
       description: Not found
-      body:
-        application/json:
-          example: {"message": "<<resourcePathName>> returned no results."}
     500:
       description: Internal server error
-      body:
-        application/json:
-          example: {"message":"Internal server error."}
 post:
   description: |
     Creates a new <<resourcePathName|!singularize>> in the system.
   body:
     application/json:
-      type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
+      #type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
+      type: <<type>>
       example: <<itemExample>>
   responses:
     201:
       body:
         application/json:
-          type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
+          #type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
+          type: <<type>>
           example: <<itemExample>>
     400:
       description: Petition error
@@ -79,3 +68,21 @@ post:
       body:
         application/json:
           example: {"message":"Internal server error."}
+
+put:
+  description: Method not allowed
+  responses:
+    405:
+      description: Method not allowed
+
+patch:
+  description: Method not allowed
+  responses:
+    405:
+      description: Method not allowed
+
+delete:
+  description: Method not allowed
+  responses:
+    405:
+      description: Method not allowed
