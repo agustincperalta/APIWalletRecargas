@@ -1,4 +1,64 @@
 #%RAML 1.0
 title: WalletRecargas
 version: v0
-baseUri: http://api.samplehost.com
+baseUri: http://api.walletgft.com
+
+uses:
+    _common: types/_common.raml
+    telefonica: types/Telefonica.raml
+    banco: types/Banco.raml
+
+resourceTypes:
+  collection: !include resourceTypes/collection.raml
+  collection-item: !include resourceTypes/collection-item.raml
+
+/bancos:
+    type: collection
+    get:
+        responses:
+            200:
+                body:
+                    application/json:
+                        type: banco.Banco[]
+                        example: !include examples/bancos.json
+    post:
+        body:
+            application/json:
+                type: banco.Banco
+                example: !include examples/banco.json
+        responses:
+            201:
+                body:
+                    application/json:
+                        type: banco.Banco
+                        example: !include examples/banco.json
+    /{banco-id}:
+        type: collection-item
+        uriParameters: 
+            banco-id: 
+                type: _common.id
+                description: |
+                    Identificador del Banco.
+
+
+/telefonicas:
+    type: 
+        collection:
+            collectionType: telefonica.Telefonica
+            collectionExample: !include examples/telefonicas.json
+            itemExample: !include examples/telefonica.json
+
+    /{telefonica-id}:
+        type: collection-item
+        uriParameters:
+            telefonica-id:
+                type: _common.id
+                description: |
+                    Identificador de la Telefonica.
+        get:
+            responses:
+                200:
+                    body:
+                        application/json:
+                            type: telefonica.Telefonica
+                            example: !include examples/telefonica.json
