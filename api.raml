@@ -23,6 +23,7 @@ traits:
       collectionExample: !include examples/banks.json
       itemExample: !include examples/bank.json
   is: [pageable, sortable:{fieldsList: "id, name"}, searchable: {description: "with valid searchable fields: id, name", example: "[\"name\", \"Santan\", \"like\"]"}]
+
   /{bank-id}:
     type:
       collection-item:
