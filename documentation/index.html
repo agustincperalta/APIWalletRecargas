@@ -1,0 +1,271 @@
+<!DOCTYPE HTML><html><head><title>WalletRecargas API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 7.5.0"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+  $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+
+  $('[data-toggle]').click(function() {
+    var selector = $(this).data('target') + ' pre code';
+    $(selector).each(function(i, block) {
+      hljs.highlightBlock(block);
+    });
+  });
+
+  // open modal on hashes like #_action_get
+  $(window).bind('hashchange', function(e) {
+    var anchor_id = document.location.hash.substr(1); //strip #
+    var element = $('#' + anchor_id);
+
+    // do we have such element + is it a modal?  --> show it
+    if (element.length && element.hasClass('modal')) {
+      element.modal('show');
+    }
+  });
+
+  // execute hashchange on first page load
+  $(window).trigger('hashchange');
+
+  // remove url fragment on modal hide
+  $('.modal').on('hidden.bs.modal', function() {
+    try {
+      if (history && history.replaceState) {
+          history.replaceState({}, '', '#');
+      }
+    } catch(e) {}
+  });
+});
+    </script><style>
+      .hljs {
+  background: transparent;
+}
+.parent {
+  color: #999;
+}
+.list-group-item > .badge {
+  float: none;
+  margin-right: 6px;
+}
+.panel-title > .methods {
+  float: right;
+}
+.badge {
+  border-radius: 0;
+  text-transform: uppercase;
+  width: 70px;
+  font-weight: normal;
+  color: #f3f3f6;
+  line-height: normal;
+}
+.badge_get {
+  background-color: #63a8e2;
+}
+.badge_post {
+  background-color: #6cbd7d;
+}
+.badge_put {
+  background-color: #22bac4;
+}
+.badge_delete {
+  background-color: #d26460;
+}
+.badge_patch {
+  background-color: #ccc444;
+}
+.list-group,
+.panel-group {
+  margin-bottom: 0;
+}
+.panel-group .panel+.panel-white {
+  margin-top: 0;
+}
+.panel-group .panel-white {
+  border-bottom: 1px solid #F5F5F5;
+  border-radius: 0;
+}
+.panel-white:last-child {
+  border-bottom-color: white;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.panel-white .panel-heading {
+  background: white;
+}
+.tab-pane ul {
+  padding-left: 2em;
+}
+.tab-pane h1 {
+  font-size: 1.3em;
+}
+.tab-pane h2 {
+  font-size: 1.2em;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ddd;
+}
+.tab-pane h3 {
+  font-size: 1.1em;
+}
+.tab-content {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+#sidebar {
+  margin-top: 30px;
+  padding-right: 5px;
+  overflow: auto;
+  height: 90%;
+}
+.top-resource-description {
+  border-bottom: 1px solid #ddd;
+  background: #fcfcfc;
+  padding: 15px 15px 0 15px;
+  margin: -15px -15px 10px -15px;
+}
+.resource-description {
+  border-bottom: 1px solid #fcfcfc;
+  background: #fcfcfc;
+  padding: 15px 15px 0 15px;
+  margin: -15px -15px 10px -15px;
+}
+.resource-description p:last-child {
+  margin: 0;
+}
+.list-group .badge {
+  float: left;
+}
+.method_description {
+  margin-left: 85px;
+}
+.method_description p:last-child {
+  margin: 0;
+}
+.list-group-item {
+  cursor: pointer;
+}
+.list-group-item:hover {
+  background-color: #f5f5f5;
+}
+pre code {
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
+}
+.items {
+  background: #f5f5f5;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+}
+.examples {
+  margin-left: 0.5em;
+}
+.resource-modal li > ul {
+  margin-bottom: 1em;
+}
+.required {
+  color: #f00;
+}
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>WalletRecargas API documentation <small>version v0</small></h1><p>http://api.walletgft.com</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="banks" class="panel-title">/banks</h3></div><div class="panel-body"><div class="top-resource-description"><p>Collection of banks available in the system.</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_banks"><span class="parent"></span>/banks</a> <span class="methods"><a href="#banks_get"><span class="badge badge_get">get</span></a> <a href="#banks_post"><span class="badge badge_post">post</span></a> <a href="#banks_put"><span class="badge badge_put">put</span></a> <a href="#banks_patch"><span class="badge badge_patch">patch</span></a> <a href="#banks_delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_banks" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#banks_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Obtains a list of banks available in the system.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#banks_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Creates a new bank in the system.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#banks_put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Method not allowed</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#banks_patch'" class="list-group-item"><span class="badge badge_patch">patch</span><div class="method_description"><p>Method not allowed</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#banks_delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Method not allowed</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="banks_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/banks</h4></div><div class="modal-body"><div class="alert alert-info"><p>Obtains a list of banks available in the system.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#banks_get_request" data-toggle="tab">Request</a></li><li><a href="#banks_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="banks_get_request"><h3>Query Parameters</h3><ul><li><strong>offset</strong>: <em>(integer - default: 0)</em><p>Skip over a number of elements by specifying an offset value for the query.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>20</code></pre></div></li><li><strong>limit</strong>: <em>(integer - default: 10)</em><p>Limit the number of elements on the response.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>80</code></pre></div></li><li><strong>orderBy</strong>: <em>(string)</em><p>Order by field: name</p></li><li><strong>order</strong>: <em>(one of desc, asc - default: desc)</em><p>Order</p></li><li><strong>query</strong>: <em><span class="required">required</span>(string)</em><p>JSON array [{"field1","value1","operator1"},...,{"fieldN","valueN","operatorN"}] with valid searchable fields: id, name</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>["name", "Santan", "like"]
+</code></pre></div></li></ul></div><div class="tab-pane" id="banks_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: array of object</p><p><strong>Items</strong>: bank</p><div class="items"><ul><li><strong>id</strong>: <em>(integer - minimum: 0)</em><p>Bank Identifier.</p></li><li><strong>name</strong>: <em><span class="required">required</span>(string)</em><p>Bank Name.</p></li></ul></div><p><strong>Example</strong>:</p><div class="examples"><pre><code>[
+    {
+        "id": 12345,
+        "name": "BBVA"
+    },
+    {
+        "id": 54321,
+        "name": "Santander"
+    }
+]</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>No Content</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>[]</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Petition error</p><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Unauthorized</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Access denied</p><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Not found</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal server error</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="banks_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/banks</h4></div><div class="modal-body"><div class="alert alert-info"><p>Creates a new bank in the system.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#banks_post_request" data-toggle="tab">Request</a></li><li><a href="#banks_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="banks_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>id</strong>: <em>(integer - minimum: 0)</em><p>Bank Identifier.</p></li><li><strong>name</strong>: <em><span class="required">required</span>(string)</em><p>Bank Name.</p></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "id": 12345,
+    "name": "BBVA"
+}</code></pre></div></div><div class="tab-pane" id="banks_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>id</strong>: <em>(integer - minimum: 0)</em><p>Bank Identifier.</p></li><li><strong>name</strong>: <em><span class="required">required</span>(string)</em><p>Bank Name.</p></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "id": 12345,
+    "name": "BBVA"
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Petition error</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "message": "Petition error."
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Unauthorized</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "message": "Unauthorized, please login."
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Access denied</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "message": "Access denied."
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Not found</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "message": "banks returned no results."
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal server error</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "message": "Internal server error."
+}</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="banks_put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent"></span>/banks</h4></div><div class="modal-body"><div class="alert alert-info"><p>Method not allowed</p></div><ul class="nav nav-tabs"><li class="active"><a href="#banks_put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="banks_put_response"><h2>HTTP status code <a href="http://httpstatus.es/405" target="_blank">405</a></h2><p>Method not allowed</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="banks_patch"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_patch">patch</span> <span class="parent"></span>/banks</h4></div><div class="modal-body"><div class="alert alert-info"><p>Method not allowed</p></div><ul class="nav nav-tabs"><li class="active"><a href="#banks_patch_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="banks_patch_response"><h2>HTTP status code <a href="http://httpstatus.es/405" target="_blank">405</a></h2><p>Method not allowed</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="banks_delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent"></span>/banks</h4></div><div class="modal-body"><div class="alert alert-info"><p>Method not allowed</p></div><ul class="nav nav-tabs"><li class="active"><a href="#banks_delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="banks_delete_response"><h2>HTTP status code <a href="http://httpstatus.es/405" target="_blank">405</a></h2><p>Method not allowed</p></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_banks__bank_id_"><span class="parent">/banks</span>/{bank-id}</a> <span class="methods"><a href="#banks__bank_id__get"><span class="badge badge_get">get</span></a> <a href="#banks__bank_id__post"><span class="badge badge_post">post</span></a> <a href="#banks__bank_id__put"><span class="badge badge_put">put</span></a> <a href="#banks__bank_id__patch"><span class="badge badge_patch">patch</span></a> <a href="#banks__bank_id__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_banks__bank_id_" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>bank Item Collection.</p></div><div class="list-group"><div onclick="window.location.href = '#banks__bank_id__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Obtain a bank object.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#banks__bank_id__post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Method not allowed</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#banks__bank_id__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Replace a bank object.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#banks__bank_id__patch'" class="list-group-item"><span class="badge badge_patch">patch</span><div class="method_description"><p>Partial update to a bank object.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#banks__bank_id__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Delete a bank object.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="banks__bank_id__get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/banks</span>/{bank-id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Obtain a bank object.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#banks__bank_id__get_request" data-toggle="tab">Request</a></li><li><a href="#banks__bank_id__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="banks__bank_id__get_request"><h3>URI Parameters</h3><ul><li><strong>bank-id</strong>: <em><span class="required">required</span>(integer - minimum: 0)</em><p>Bank Identifier.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>12345</code></pre></div></li></ul></div><div class="tab-pane" id="banks__bank_id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>id</strong>: <em>(integer - minimum: 0)</em><p>Bank Identifier.</p></li><li><strong>name</strong>: <em><span class="required">required</span>(string)</em><p>Bank Name.</p></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "id": 12345,
+    "name": "BBVA"
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Petition error</p><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Unauthorized</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Access denied</p><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Not found</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal server error</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="banks__bank_id__post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/banks</span>/{bank-id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Method not allowed</p></div><ul class="nav nav-tabs"><li class="active"><a href="#banks__bank_id__post_request" data-toggle="tab">Request</a></li><li><a href="#banks__bank_id__post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="banks__bank_id__post_request"><h3>URI Parameters</h3><ul><li><strong>bank-id</strong>: <em><span class="required">required</span>(integer - minimum: 0)</em><p>Bank Identifier.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>12345</code></pre></div></li></ul></div><div class="tab-pane" id="banks__bank_id__post_response"><h2>HTTP status code <a href="http://httpstatus.es/405" target="_blank">405</a></h2><p>Method not allowed</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="banks__bank_id__put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/banks</span>/{bank-id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Replace a bank object.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#banks__bank_id__put_request" data-toggle="tab">Request</a></li><li><a href="#banks__bank_id__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="banks__bank_id__put_request"><h3>URI Parameters</h3><ul><li><strong>bank-id</strong>: <em><span class="required">required</span>(integer - minimum: 0)</em><p>Bank Identifier.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>12345</code></pre></div></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>id</strong>: <em>(integer - minimum: 0)</em><p>Bank Identifier.</p></li><li><strong>name</strong>: <em><span class="required">required</span>(string)</em><p>Bank Name.</p></li></ul></div><div class="tab-pane" id="banks__bank_id__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>id</strong>: <em>(integer - minimum: 0)</em><p>Bank Identifier.</p></li><li><strong>name</strong>: <em><span class="required">required</span>(string)</em><p>Bank Name.</p></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "id": 12345,
+    "name": "BBVA"
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><p>Created</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>id</strong>: <em>(integer - minimum: 0)</em><p>Bank Identifier.</p></li><li><strong>name</strong>: <em><span class="required">required</span>(string)</em><p>Bank Name.</p></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "id": 12345,
+    "name": "BBVA"
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>No content</p><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Not found</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal server error</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="banks__bank_id__patch"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_patch">patch</span> <span class="parent">/banks</span>/{bank-id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Partial update to a bank object.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#banks__bank_id__patch_request" data-toggle="tab">Request</a></li><li><a href="#banks__bank_id__patch_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="banks__bank_id__patch_request"><h3>URI Parameters</h3><ul><li><strong>bank-id</strong>: <em><span class="required">required</span>(integer - minimum: 0)</em><p>Bank Identifier.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>12345</code></pre></div></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "id": 12345,
+    "name": "BBVA"
+}</code></pre></div></div><div class="tab-pane" id="banks__bank_id__patch_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Ok</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>id</strong>: <em>(integer - minimum: 0)</em><p>Bank Identifier.</p></li><li><strong>name</strong>: <em><span class="required">required</span>(string)</em><p>Bank Name.</p></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "id": 12345,
+    "name": "BBVA"
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>No Content</p><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Not Found</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal server error</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="banks__bank_id__delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/banks</span>/{bank-id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete a bank object.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#banks__bank_id__delete_request" data-toggle="tab">Request</a></li><li><a href="#banks__bank_id__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="banks__bank_id__delete_request"><h3>URI Parameters</h3><ul><li><strong>bank-id</strong>: <em><span class="required">required</span>(integer - minimum: 0)</em><p>Bank Identifier.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>12345</code></pre></div></li></ul></div><div class="tab-pane" id="banks__bank_id__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>id</strong>: <em>(integer - minimum: 0)</em><p>Bank Identifier.</p></li><li><strong>name</strong>: <em><span class="required">required</span>(string)</em><p>Bank Name.</p></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "id": 12345,
+    "name": "BBVA"
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>No Content</p><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Not Found</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal server error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="providers" class="panel-title">/providers</h3></div><div class="panel-body"><div class="top-resource-description"><p>Collection of providers available in the system.</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_providers"><span class="parent"></span>/providers</a> <span class="methods"><a href="#providers_get"><span class="badge badge_get">get</span></a> <a href="#providers_post"><span class="badge badge_post">post</span></a> <a href="#providers_put"><span class="badge badge_put">put</span></a> <a href="#providers_patch"><span class="badge badge_patch">patch</span></a> <a href="#providers_delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_providers" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#providers_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Obtains a list of providers available in the system.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#providers_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Creates a new provider in the system.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#providers_put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Method not allowed</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#providers_patch'" class="list-group-item"><span class="badge badge_patch">patch</span><div class="method_description"><p>Method not allowed</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#providers_delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Method not allowed</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="providers_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/providers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Obtains a list of providers available in the system.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#providers_get_request" data-toggle="tab">Request</a></li><li><a href="#providers_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="providers_get_request"><h3>Query Parameters</h3><ul><li><strong>offset</strong>: <em>(integer - default: 0)</em><p>Skip over a number of elements by specifying an offset value for the query.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>20</code></pre></div></li><li><strong>limit</strong>: <em>(integer - default: 10)</em><p>Limit the number of elements on the response.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>80</code></pre></div></li><li><strong>orderBy</strong>: <em>(string)</em><p>Order by field: name</p></li><li><strong>order</strong>: <em>(one of desc, asc - default: desc)</em><p>Order</p></li><li><strong>query</strong>: <em><span class="required">required</span>(string)</em><p>JSON array [{"field1","value1","operator1"},...,{"fieldN","valueN","operatorN"}] with valid searchable fields: id, name</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>["name", "Santan", "like"]
+</code></pre></div></li></ul></div><div class="tab-pane" id="providers_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: array of object</p><p><strong>Items</strong>: bank</p><div class="items"><ul><li><strong>id</strong>: <em>(integer - minimum: 0)</em><p>Bank Identifier.</p></li><li><strong>name</strong>: <em><span class="required">required</span>(string)</em><p>Bank Name.</p></li></ul></div><p><strong>Example</strong>:</p><div class="examples"><pre><code>[
+    {
+        "id": 12345,
+        "name": "MoviStar",
+        "amounts": [ 20, 30, 50, 70, 100, 200, 300, 500 ]
+    },
+    {
+        "id": 54321,
+        "name": "Telcel",
+        "amounts": [ 50, 100, 300, 500 ]
+    }
+]</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>No Content</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>[]</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Petition error</p><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Unauthorized</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Access denied</p><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Not found</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal server error</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="providers_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/providers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Creates a new provider in the system.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#providers_post_request" data-toggle="tab">Request</a></li><li><a href="#providers_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="providers_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>id</strong>: <em>(integer - minimum: 0)</em><p>Bank Identifier.</p></li><li><strong>name</strong>: <em><span class="required">required</span>(string)</em><p>Bank Name.</p></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "id": 12345,
+    "name": "MoviStar",
+    "amounts": [ 20, 30, 50, 70, 100, 200, 300, 500 ]
+}</code></pre></div></div><div class="tab-pane" id="providers_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>id</strong>: <em>(integer - minimum: 0)</em><p>Bank Identifier.</p></li><li><strong>name</strong>: <em><span class="required">required</span>(string)</em><p>Bank Name.</p></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "id": 12345,
+    "name": "MoviStar",
+    "amounts": [ 20, 30, 50, 70, 100, 200, 300, 500 ]
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Petition error</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "message": "Petition error."
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Unauthorized</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "message": "Unauthorized, please login."
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Access denied</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "message": "Access denied."
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Not found</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "message": "providers returned no results."
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal server error</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "message": "Internal server error."
+}</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="providers_put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent"></span>/providers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Method not allowed</p></div><ul class="nav nav-tabs"><li class="active"><a href="#providers_put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="providers_put_response"><h2>HTTP status code <a href="http://httpstatus.es/405" target="_blank">405</a></h2><p>Method not allowed</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="providers_patch"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_patch">patch</span> <span class="parent"></span>/providers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Method not allowed</p></div><ul class="nav nav-tabs"><li class="active"><a href="#providers_patch_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="providers_patch_response"><h2>HTTP status code <a href="http://httpstatus.es/405" target="_blank">405</a></h2><p>Method not allowed</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="providers_delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent"></span>/providers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Method not allowed</p></div><ul class="nav nav-tabs"><li class="active"><a href="#providers_delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="providers_delete_response"><h2>HTTP status code <a href="http://httpstatus.es/405" target="_blank">405</a></h2><p>Method not allowed</p></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_providers__provider_id_"><span class="parent">/providers</span>/{provider-id}</a> <span class="methods"><a href="#providers__provider_id__get"><span class="badge badge_get">get</span></a> <a href="#providers__provider_id__post"><span class="badge badge_post">post</span></a> <a href="#providers__provider_id__put"><span class="badge badge_put">put</span></a> <a href="#providers__provider_id__patch"><span class="badge badge_patch">patch</span></a> <a href="#providers__provider_id__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_providers__provider_id_" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>provider Item Collection.</p></div><div class="list-group"><div onclick="window.location.href = '#providers__provider_id__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Obtain a provider object.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#providers__provider_id__post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Method not allowed</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#providers__provider_id__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Replace a provider object.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#providers__provider_id__patch'" class="list-group-item"><span class="badge badge_patch">patch</span><div class="method_description"><p>Partial update to a provider object.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#providers__provider_id__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Delete a provider object.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="providers__provider_id__get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/providers</span>/{provider-id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Obtain a provider object.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#providers__provider_id__get_request" data-toggle="tab">Request</a></li><li><a href="#providers__provider_id__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="providers__provider_id__get_request"><h3>URI Parameters</h3><ul><li><strong>provider-id</strong>: <em><span class="required">required</span>(integer - minimum: 0)</em><p>Provider identifier.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>12345</code></pre></div></li></ul></div><div class="tab-pane" id="providers__provider_id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>id</strong>: <em>(integer - minimum: 0)</em><p>Provider Identifier.</p></li><li><strong>name</strong>: <em><span class="required">required</span>(string)</em><p>Provider Name.</p></li><li><strong>amounts</strong>: <em><span class="required">required</span>(array of integer)</em><p>Recharge amounts supported by the provider.</p></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "id": 12345,
+    "name": "MoviStar",
+    "amounts": [ 20, 30, 50, 70, 100, 200, 300, 500 ]
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Petition error</p><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Unauthorized</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Access denied</p><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Not found</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal server error</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="providers__provider_id__post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/providers</span>/{provider-id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Method not allowed</p></div><ul class="nav nav-tabs"><li class="active"><a href="#providers__provider_id__post_request" data-toggle="tab">Request</a></li><li><a href="#providers__provider_id__post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="providers__provider_id__post_request"><h3>URI Parameters</h3><ul><li><strong>provider-id</strong>: <em><span class="required">required</span>(integer - minimum: 0)</em><p>Provider identifier.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>12345</code></pre></div></li></ul></div><div class="tab-pane" id="providers__provider_id__post_response"><h2>HTTP status code <a href="http://httpstatus.es/405" target="_blank">405</a></h2><p>Method not allowed</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="providers__provider_id__put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/providers</span>/{provider-id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Replace a provider object.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#providers__provider_id__put_request" data-toggle="tab">Request</a></li><li><a href="#providers__provider_id__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="providers__provider_id__put_request"><h3>URI Parameters</h3><ul><li><strong>provider-id</strong>: <em><span class="required">required</span>(integer - minimum: 0)</em><p>Provider identifier.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>12345</code></pre></div></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>id</strong>: <em>(integer - minimum: 0)</em><p>Provider Identifier.</p></li><li><strong>name</strong>: <em><span class="required">required</span>(string)</em><p>Provider Name.</p></li><li><strong>amounts</strong>: <em><span class="required">required</span>(array of integer)</em><p>Recharge amounts supported by the provider.</p></li></ul></div><div class="tab-pane" id="providers__provider_id__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>id</strong>: <em>(integer - minimum: 0)</em><p>Provider Identifier.</p></li><li><strong>name</strong>: <em><span class="required">required</span>(string)</em><p>Provider Name.</p></li><li><strong>amounts</strong>: <em><span class="required">required</span>(array of integer)</em><p>Recharge amounts supported by the provider.</p></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "id": 12345,
+    "name": "MoviStar",
+    "amounts": [ 20, 30, 50, 70, 100, 200, 300, 500 ]
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><p>Created</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>id</strong>: <em>(integer - minimum: 0)</em><p>Provider Identifier.</p></li><li><strong>name</strong>: <em><span class="required">required</span>(string)</em><p>Provider Name.</p></li><li><strong>amounts</strong>: <em><span class="required">required</span>(array of integer)</em><p>Recharge amounts supported by the provider.</p></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "id": 12345,
+    "name": "MoviStar",
+    "amounts": [ 20, 30, 50, 70, 100, 200, 300, 500 ]
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>No content</p><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Not found</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal server error</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="providers__provider_id__patch"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_patch">patch</span> <span class="parent">/providers</span>/{provider-id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Partial update to a provider object.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#providers__provider_id__patch_request" data-toggle="tab">Request</a></li><li><a href="#providers__provider_id__patch_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="providers__provider_id__patch_request"><h3>URI Parameters</h3><ul><li><strong>provider-id</strong>: <em><span class="required">required</span>(integer - minimum: 0)</em><p>Provider identifier.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>12345</code></pre></div></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "id": 12345,
+    "name": "MoviStar",
+    "amounts": [ 20, 30, 50, 70, 100, 200, 300, 500 ]
+}</code></pre></div></div><div class="tab-pane" id="providers__provider_id__patch_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Ok</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>id</strong>: <em>(integer - minimum: 0)</em><p>Provider Identifier.</p></li><li><strong>name</strong>: <em><span class="required">required</span>(string)</em><p>Provider Name.</p></li><li><strong>amounts</strong>: <em><span class="required">required</span>(array of integer)</em><p>Recharge amounts supported by the provider.</p></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "id": 12345,
+    "name": "MoviStar",
+    "amounts": [ 20, 30, 50, 70, 100, 200, 300, 500 ]
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>No Content</p><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Not Found</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal server error</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="providers__provider_id__delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/providers</span>/{provider-id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete a provider object.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#providers__provider_id__delete_request" data-toggle="tab">Request</a></li><li><a href="#providers__provider_id__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="providers__provider_id__delete_request"><h3>URI Parameters</h3><ul><li><strong>provider-id</strong>: <em><span class="required">required</span>(integer - minimum: 0)</em><p>Provider identifier.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>12345</code></pre></div></li></ul></div><div class="tab-pane" id="providers__provider_id__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>id</strong>: <em>(integer - minimum: 0)</em><p>Provider Identifier.</p></li><li><strong>name</strong>: <em><span class="required">required</span>(string)</em><p>Provider Name.</p></li><li><strong>amounts</strong>: <em><span class="required">required</span>(array of integer)</em><p>Recharge amounts supported by the provider.</p></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "id": 12345,
+    "name": "MoviStar",
+    "amounts": [ 20, 30, 50, 70, 100, 200, 300, 500 ]
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>No Content</p><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Not Found</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal server error</p></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#banks">/banks</a></li><li><a href="#providers">/providers</a></li></ul></div></div></div></div></body></html>
