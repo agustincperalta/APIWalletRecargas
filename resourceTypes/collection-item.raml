@@ -15,29 +15,14 @@ get:
           example: <<itemExample>>
     400:
       description: Petition error
-      body:
-        application/json:
-          example: {"message":"Petition error."}
     401:
       description: Unauthorized
-      body:
-        application/json:
-          example: {"message":"Authorization error."}
     403:
       description: Access denied
-      body:
-        application/json:
-          example: {"message":"Access denied."}
     404:
       description: Not found
-      body:
-        application/json:
-          example: {"message": "<<resourcePathName|!singularize>> not found."}
     500:
       description: Internal server error
-      body:
-        application/json:
-          example: {"message":"Internal server error."}
 
 post:
   description: |
@@ -72,16 +57,18 @@ put:
       description: No content
     404:
       description: Not found
+    500:
+      description: Internal server error
 
 patch:
   description: |
-    Update a <<resourcePathName|!singularize>> object.
+    Partial update to a <<resourcePathName|!singularize>> object.
   body:
     application/json:
       type: any
       description: |
-        [{"operator1","field1","value1"},...,{"operatorN","fieldN","valueN"}]
-      example: [{"update","name","BBVA"}]
+        Array containing the fields to update.
+      example: <<updateExample>>
   responses:
     200:
       description: Ok
@@ -93,6 +80,8 @@ patch:
       description: No Content
     404:
       description: Not Found
+    500:
+      description: Internal server error
 
 delete:
   description: |
@@ -109,3 +98,5 @@ delete:
       description: No Content
     404:
       description: Not Found
+    500:
+      description: Internal server error
