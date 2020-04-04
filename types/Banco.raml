@@ -1,0 +1,17 @@
+#%RAML 1.0 Library
+
+types:
+    Banco:
+        type: object
+        properties:
+            id: 
+                type: integer
+                minimum: 0
+                description: | 
+                    Identificador del banco.
+                required: true
+            nombre:
+                type: string
+                description: |
+                    Nombre del banco.
+                required: true
