@@ -1,12 +1,36 @@
 #%RAML 1.0 ResourceType
 
+description: Item de coleccion de <<resourcePathName>>.
 get:
+    description: |
+        Obtiene un objeto <<resourcePathName|!singularize>>.
     responses:
         200:
+            description: OK
             body:
                 application/json:
+        400:
+            description: Petition error
+            body:
+                application/json:
+                    example: {"message":"Error de petición."}
+        401:
+            description: Unauthorized
+            body:
+                application/json:
+                    example: {"message":"Error de autorización."}
+        403:
+            description: Access denied
+            body:
+                application/json:
+                    example: {"message":"Acceso denegado."}
         404:
+            description: Not found
             body:
                 application/json:
-                    example: |
-                        {"message": "<<resourcePathName>> no encontrado." }
+                    example: {"message": "<<resourcePathName!singularize>> no encontrado."}
+        500:
+            description: Internal server error
+            body:
+                application/json:
+                    example: {"message":"Error del servidor."}

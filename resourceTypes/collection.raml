@@ -6,19 +6,62 @@ get:
         Obtiene una lista de <<resourcePathName>> en el sistema.
     responses:
         200:
+            description: OK
             body:
                 application/json:
+                    type: <<collectionType>>[]
+                    example: <<collectionExample>>
+        400:
+            description: Petition error
+            body:
+                application/json:
+                    example: {"message":"Error de petición."}
+        401:
+            description: Unauthorized
+            body:
+                application/json:
+                    example: {"message":"Error de autorización."}
+        403:
+            description: Access denied
+            body:
+                application/json:
+                    example: {"message":"Acceso denegado."}
         404:
+            description: Not found
             body:
                 application/json:
                     example: {"message": "No hay <<resourcePathName>> en el sistema."}
+        500:
+            description: Internal server error
+            body:
+                application/json:
+                    example: {"message":"Error del servidor."}
 post:
     description: |
         Crea un nuevo objeto <<resourcePathName>>.
     body:
         application/json:
+            type: <<collectionType>>
+            example: <<itemExample>>
     responses:
-        200:
-            description: OK
+        201:
             body:
                 application/json:
+                    type: <<collectionType>>
+                    example: <<itemExample>>
+        400:
+            body:
+                application/json:
+                    example: {"message":"Error de petición."}
+        401:
+            body:
+                application/json:
+                    example: {"message":"Error de autorización."}
+        403:
+            body:
+                application/json:
+                    example: {"message":"Acceso denegado."}
+        500:
+            body:
+                application/json:
+                    example: {"message":"Error del servidor."}
