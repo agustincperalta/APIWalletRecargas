@@ -1,3 +1,5 @@
+![GFT](GFT_logo.png)
+
 # **Explicación del ejercicio:**
 
 
@@ -40,49 +42,45 @@ Al final habrá un botón que confirmara la recarga y al tener éxito en ella, s
 
 
 
-*   Cliente
-    *   id # integer
-    *   nombreCompleto #String
-    *   dirección #String
+*   clients
     *   rfc #String
-    *   -> telefono #agregacion
-    *   -> cuenta #agregacion
-    *   _public_ Cuentas[] verCuentas ( )
-    *   _public_ boolean agregarTelefono ( )
-    *   _public_ boolean agregarCuenta ( )
-*   Telefono
+    *   name #String
+    *   lastname #String
+    *   address #String
+    *   -> phones #agregacion
+    *   -> accounts #agregacion
+    *   _public_ Accounts[] getAccounts ( )
+    *   _public_ boolean addPhone ( )
+    *   _public_ boolean addAccount ( )
+*   Phone
     *   id # integer
-    *   numero #String
-    *   claveLada #String
-    *   -> compañiaTelefonica # composicion
-*   Cuenta
+    *   number #String
+    *   -> Provider # composicion
+    *   _public_ boolean recharge ( )
+*   Account
     *   id # integer
-    *   -> operacion # agregacion
-*   Cuenta Bancaria &lt;- Cuenta
+    *   -> transactions # agregacion
+    *   _public_ boolean doCharge ( )
+*   BankAccount &lt;- Account
     *   clabe # String
-    *   _public_ boolean realizarCargo ( )
-    *   -> banco # composicion
-*   Banco
+    *   _public_ boolean do ( )
+    *   -> bank # composicion
+*   Bank
     *   id # integer
-    *   nombre #String
-*   Cuenta Debito &lt;- Cuenta Bancaria
-    *   saldo # double
-*   Cuenta Credito &lt;- Cuenta Bancaria
-    *   limiteCredito # double
-*   Compañia telefonica
+    *   name #String
+*   Provider
     *   id # integer
-    *   nombre # String
-    *   _public_ boolean realizarRecarga ( )
-*   Operacion
+    *   name # String
+*   Transaction
     *   id # integer
     *   fecha # date
     *   status # String
-*   Recarga &lt;- Operacion
-    *   monto # double
-    *   moneda # String
-    *   _public_ boolean ejecutarSolicitud ( )
-    *   ->telefono # composicion
-    *   ->cuentaBancaria # composicion
+*   Recharge &lt;- Transaction
+    *   amount # double
+    *   currency # String
+    *   _public_ boolean excecute ( )
+    *   ->phone # composicion
+    *   ->bankAccount # composicion
 
 
 ### 
@@ -92,54 +90,49 @@ Al final habrá un botón que confirmara la recarga y al tener éxito en ella, s
 
 
 
-*   Recurso: Banco
-    *   URI: /Banco/
+*   Recurso: Banks
+    *   URI: /banks/
         *   Verbo: GET
-        *   Regresa: List&lt;Bancos>
-*   Recurso: Telefonica
-    *   URI: /Telefonica/
+        *   Regresa: List&lt;Bank>
+*   Recurso: Providers
+    *   URI: /providers/
         *   Verbo: GET
-        *   Regresa: List&lt;Telefonica>
-*   Recurso: Cuenta
-    *   URI: /Cliente/{cliente}/Cuenta/
+        *   Regresa: List&lt;Provider>
+*   Recurso: Accounts
+    *   URI: /clients/{client-id}/accounts/
         *   verbo: POST
-        *   Parametros: banco={banco}&clabe={clabe}
-        *   Regresa: 201, Cuenta
-    *   URI: /Cliente/{cliente}/Cuenta/{cuenta}/
+        *   Parametros: bank={bank-id}&clabe={clabe}
+        *   Regresa: 201, Account
+    *   URI: /clients/{client-id}/accounts/{account-id}/
         *   verbo: GET
-        *   Regresa: 200, Cuenta
-    *   URI: /Cliente/{cliente}/Cuenta/
+        *   Regresa: 200, Account
+    *   URI: /clients/{client-id}/accounts/
         *   verbo: GET
-        *   Regresa: 200, List[Cuenta]
-*   Recurso: Telefono
-    *   URI: /Cliente/{cliente}/Telefono/
+        *   Regresa: 200, List&lt;Account>
+*   Recurso: Phones
+    *   URI: /clients/{client-id}/phones/
         *   verbo: POST
-        *   Parametros: numero={numero}&telefonica={telefonica}
-        *   Regresa: 201, Telefono
-    *   URI: /Cliente/{cliente}/Telefono/
+        *   Parametros: number={number}&provider={provider-id}
+        *   Regresa: 201, Phone
+    *   URI: /clients/{client-id}/phones/
         *   Verbo: GET
-        *   Regresa: 200, List&lt;Telefono>
-    *   URI: /Cliente/{cliente}/Telefono/{telefono}/
+        *   Regresa: 200, List&lt;Phone>
+    *   URI: /clients/{client-id}/phones/{phone-id}/
         *   Verbo: GET
-        *   Regresa: 200, Telefono
-*   Recurso: Recarga
-    *   URI: /Cliente/{cliente}/Recarga/{operacion}
+        *   Regresa: 200, Phone
+*   Recurso: Recharges
+    *   URI: /clients/{client-id}/recharges/{transaction-id}
         *   verbo: GET
-        *   Regresa: 200, Recarga
-    *   URI: /Cliente/{cliente}/Recarga
+        *   Regresa: 200, Recharges
+    *   URI: /clients/{client-id}/recharges
         *   verbo: GET
-        *   Regresa: 200, List[Recarga]
-    *   URI: /Cliente/{cliente}/Recarga/
+        *   Regresa: 200, List&lt;Recharges>
+    *   URI: /clients/{client-id}/recharges/
         *   Verbo: POST
-        *   Parametros: cuenta={Cuenta},monto={monto},moneda={moneda},telefono={Telefono}
-        *   Regresa: 201, Recarga
+        *   Parametros: account={account-id},amount={amount},currency={currency},phone={phone-id}
+        *   Regresa: 201, Recharges
 
 
-### **Diagramas**
+### **Diagrama**
 
-![Diagrama de clases](https://raw.githubusercontent.com/agustincperalta/APIWalletRecargas/master/diagrama.png)
-
-*   Cliente
-*   Operacion, Recarga
-*   Telefono, Telefonica, Banco
-*   Cuenta, Cuenta Bancaria, Debito, Credito
+![Diagrama de clases](diagrama.png)
