@@ -1,0 +1,26 @@
+#%RAML 1.0 Library
+
+uses:
+  phone: phone.raml
+
+types:
+  Recharge:
+    type: operation.Operation
+    properties:
+      amount:
+        type: number
+        format: double
+        description: |
+          Cantidad de dinero a recargar.
+        required: true
+      currency:
+        type: string
+        enum: [USD, EUR, MXN]
+        description: |
+          Tipo de moneda en la que se realizara la recarga.
+        required: true
+      phone:
+        type: phone.Phone
+        description: |
+          Telefono al que se realizara la recarga.
+        required: true
