@@ -1,0 +1,32 @@
+#%RAML 1.0 Library
+
+uses:
+  card: card.raml
+  bank: bank.raml
+
+types:
+  BankAccount:
+    description: |
+      Bank account.
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        description: |
+          Account identifier.
+        required: false
+      clabe:
+        type: string
+        minLength: 18
+        description: |
+          Interbank account identifier.
+        required: true
+      bank:
+        type: bank.Bank
+        required: true
+      cards:
+        type: card.Card[]
+        description: |
+          List of cards belonging to bank account.
+        required: true

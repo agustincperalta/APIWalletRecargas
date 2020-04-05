@@ -20,18 +20,18 @@ traits:
 /banks:
   type:
     collection:
-      type: bank.bank
-      collectionExample: !include examples/banks.json
-      itemExample: !include examples/bank.json
+      type: bank.Bank
+      collectionExample: !include examples/bank/banks.json
+      itemExample: !include examples/bank/bank.json
   get:
     is: [pageable, sortable:{fieldsList: "name"}, searchable: {description: "with valid searchable fields: id, name", example: "[\"name\", \"Santan\", \"like\"]"}]
 
   /{bank-id}:
     type:
       collection-item:
-        itemExample: !include examples/bank.json
-        type: bank.bank
-        updateExample: !include examples/bank.json
+        itemExample: !include examples/bank/bank.json
+        type: bank.Bank
+        updateExample: !include examples/bank/bank.json
     uriParameters:
       bank-id:
         type: _common.id
@@ -42,18 +42,18 @@ traits:
 /providers:
   type:
     collection:
-      type: bank.bank
-      collectionExample: !include examples/providers.json
-      itemExample: !include examples/provider.json
+      type: provider.Provider
+      collectionExample: !include examples/provider/providers.json
+      itemExample: !include examples/provider/provider.json
   get:
     is: [pageable, sortable:{fieldsList: "name"}, searchable: {description: "with valid searchable fields: id, name", example: "[\"name\", \"Santan\", \"like\"]"}]
 
   /{provider-id}:
     type:
       collection-item:
-        type: provider.provider
-        itemExample: !include examples/provider.json
-        updateExample: !include examples/provider.json
+        type: provider.Provider
+        itemExample: !include examples/provider/provider.json
+        updateExample: !include examples/provider/provider.json
     uriParameters:
       provider-id:
         type: _common.id
