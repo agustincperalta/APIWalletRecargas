@@ -1,0 +1,19 @@
+{
+ "id": 13254652,
+ "date": "2019-02-01",
+ "status": "COMPLETED",
+ "account":{
+
+ },
+ "amount": 13.00,
+ "currency": "MXN",
+ "phone": {
+   "id": 12343,
+   "numero": "5523983456",
+   "provider": {
+     "id": 123,
+     "name": "Movistar",
+     "amounts": [10,20,100,200]
+   }
+ }
+}
