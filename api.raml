@@ -1,11 +1,23 @@
 #%RAML 1.0
 title: WalletRecargas
 version: v0
-baseUri: http://api.samplehost.com
+baseUri: http://api.walletgft.com
 
 uses:
+  _common: types/_common.raml
+  provider: types/provider.raml
+  bank: types/bank.raml
   recharge: types/recharge.raml
   phone: types/phone.raml
+
+resourceTypes:
+  collection: !include resourceTypes/collection.raml
+  collection-item: !include resourceTypes/collection-item.raml
+
+traits:
+  searchable: !include traits/searchable.raml
+  pageable: !include traits/pageable.raml
+  sortable: !include traits/sortable.raml
 
 /client:
   /{client-id}:
@@ -50,3 +62,46 @@ uses:
                 application/json:
                   example: |
                     {"message": "La recarga se realizo con exito"}
+
+/banks:
+  type:
+    collection:
+      type: bank.Bank
+      collectionExample: !include examples/bank/banks.json
+      itemExample: !include examples/bank/bank.json
+  get:
+    is: [pageable, sortable:{fieldsList: "name"}, searchable: {description: "with valid searchable fields: id, name", example: "[\"name\", \"Santan\", \"like\"]"}]
+
+  /{bank-id}:
+    type:
+      collection-item:
+        itemExample: !include examples/bank/bank.json
+        type: bank.Bank
+        updateExample: !include examples/bank/bank.json
+    uriParameters:
+      bank-id:
+        type: _common.id
+        description: |
+          Bank Identifier.
+
+
+/providers:
+  type:
+    collection:
+      type: provider.Provider
+      collectionExample: !include examples/provider/providers.json
+      itemExample: !include examples/provider/provider.json
+  get:
+    is: [pageable, sortable:{fieldsList: "name"}, searchable: {description: "with valid searchable fields: id, name", example: "[\"name\", \"Santan\", \"like\"]"}]
+
+  /{provider-id}:
+    type:
+      collection-item:
+        type: provider.Provider
+        itemExample: !include examples/provider/provider.json
+        updateExample: !include examples/provider/provider.json
+    uriParameters:
+      provider-id:
+        type: _common.id
+        description: |
+          Provider identifier.

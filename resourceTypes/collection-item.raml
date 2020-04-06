@@ -1,0 +1,102 @@
+#%RAML 1.0 ResourceType
+
+description: <<resourcePathName|!singularize>> Item Collection.
+
+get:
+  description: |
+    Obtain a <<resourcePathName|!singularize>> object.
+  responses:
+    200:
+      description: OK
+      body:
+        application/json:
+          #type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
+          type: <<type>>
+          example: <<itemExample>>
+    400:
+      description: Petition error
+    401:
+      description: Unauthorized
+    403:
+      description: Access denied
+    404:
+      description: Not found
+    500:
+      description: Internal server error
+
+post:
+  description: |
+    Method not allowed
+  responses:
+    405:
+      description: Method not allowed
+
+put:
+  description: |
+    Replace a <<resourcePathName|!singularize>> object.
+  body:
+    application/json:
+      #type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
+      type: <<type>>
+  responses:
+    200:
+      description: OK
+      body:
+        application/json:
+          #type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
+          type: <<type>>
+          example: <<itemExample>>
+    201:
+      description: Created
+      body:
+        application/json:
+          #type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
+          type: <<type>>
+          example: <<itemExample>>
+    204:
+      description: No content
+    404:
+      description: Not found
+    500:
+      description: Internal server error
+
+patch:
+  description: |
+    Partial update to a <<resourcePathName|!singularize>> object.
+  body:
+    application/json:
+      type: any
+      description: |
+        Array containing the fields to update.
+      example: <<updateExample>>
+  responses:
+    200:
+      description: Ok
+      body:
+        application/json:
+          type: <<type>>
+          example: <<itemExample>>
+    204:
+      description: No Content
+    404:
+      description: Not Found
+    500:
+      description: Internal server error
+
+delete:
+  description: |
+    Delete a <<resourcePathName|!singularize>> object.
+  responses:
+    200:
+      description: OK
+      body:
+        application/json:
+          #type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
+          type: <<type>>
+          example: <<itemExample>>
+    204:
+      description: No Content
+    404:
+      description: Not Found
+    500:
+      description: Internal server error

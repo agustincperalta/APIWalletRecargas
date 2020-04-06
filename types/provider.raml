@@ -1,0 +1,22 @@
+#%RAML 1.0 Library
+
+types:
+  Provider:
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        description: |
+          Provider Identifier.
+        required: false
+      name:
+        type: string
+        description: |
+          Provider Name.
+        required: true
+      amounts:
+        type: integer[]
+        description: |
+          Recharge amounts supported by the provider.
+        required: true
