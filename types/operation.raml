@@ -1,0 +1,31 @@
+#%RAML 1.0 Library
+
+uses:
+  account: account.raml
+
+types:
+  Operation:
+    type: object
+    properties:
+      id:
+        type: number
+        format: int
+        description: |
+          Identificador de la operacion.
+        required: true
+      date:
+        type: date-only
+        description: |
+          Fecha en la que se realiza la operacion.
+        required: true
+      status:
+        type: string
+        enum: [STARTED, COMPLETED, CANCELED, DOING]
+        description: |
+          Estado en el que se encuentra la operacion.
+        required: true
+      account:
+        type: account.Account
+        description: |
+          Numero de cuenta de la operacion.
+        required: true

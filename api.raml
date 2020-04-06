@@ -7,6 +7,8 @@ uses:
   _common: types/_common.raml
   provider: types/provider.raml
   bank: types/bank.raml
+  recharge: types/recharge.raml
+  phone: types/phone.raml
 
 resourceTypes:
   collection: !include resourceTypes/collection.raml
@@ -16,6 +18,50 @@ traits:
   searchable: !include traits/searchable.raml
   pageable: !include traits/pageable.raml
   sortable: !include traits/sortable.raml
+
+/client:
+  /{client-id}:
+    /recharges:
+      description: |
+        Recurso usado para todas las recargas hechas.
+      get:
+        description: |
+          Obtener informacion acerca de todas las recargas hechas.
+        responses:
+          200:
+            body:
+              application/json:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items: recharge.Recharge
+                example: !include examples/recharges/get_200.json
+      /{operation-id}:
+        description: |
+          Recurso usado para una sola recarga hecha.
+        get:
+          description: |
+            Obtener el detalle acerca de una sola recarga.
+          responses:
+            200:
+              body:
+                application/json:
+                  type: recharge.Recharge
+                  example: !include examples/recharge/get_200.json
+        post:
+          description: |
+            Permite agregar una recarga.
+          body:
+            application/json:
+              type: recharge.Recharge
+              example: !include examples/recharge/post_201.json
+          responses:
+            201:
+              body:
+                application/json:
+                  example: |
+                    {"message": "La recarga se realizo con exito"}
 
 /banks:
   type:
