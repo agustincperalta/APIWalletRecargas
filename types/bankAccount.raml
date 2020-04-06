@@ -1,6 +1,7 @@
 #%RAML 1.0 Library
 
 uses:
+  account: account.raml
   card: card.raml
   bank: bank.raml
 
@@ -8,14 +9,8 @@ types:
   BankAccount:
     description: |
       Bank account.
-    type: object
+    type: account.Account
     properties:
-      id:
-        type: integer
-        minimum: 0
-        description: |
-          Account identifier.
-        required: false
       clabe:
         type: string
         minLength: 18
