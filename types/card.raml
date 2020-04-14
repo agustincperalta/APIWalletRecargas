@@ -1,0 +1,26 @@
+#%RAML 1.0 Library
+
+types:
+  Card:
+    description: |
+      Card belonging to a Bank Account.
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        description: |
+          Card Identifier.
+        required: false
+      number:
+        type: string
+        minLength: 16
+        description: |
+          16 digit card number.
+        required: true
+      type:
+        type: string
+        enum: [DEBIT, CREDIT]
+        description: |
+          Type of card, one of DEBIT or CREDIT.
+        required: true

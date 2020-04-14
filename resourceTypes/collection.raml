@@ -1,0 +1,73 @@
+#%RAML 1.0 ResourceType
+
+description: Collection of <<resourcePathName>> available in the system.
+get:
+  description: |
+    Obtains a list of <<resourcePathName>> available in the system.
+  responses:
+    200:
+      description: OK
+      body:
+        application/json:
+          #type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>[]
+          type: <<type>>[]
+          example: <<collectionExample>>
+    204:
+      description: No Content
+      body:
+        application/json:
+          type: any
+          example: []
+    400:
+      description: Petition error
+    401:
+      description: Unauthorized
+    403:
+      description: Access denied
+    404:
+      description: Not found
+    500:
+      description: Internal server error
+post:
+  description: |
+    Creates a new <<resourcePathName|!singularize>> in the system.
+  body:
+    application/json:
+      #type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
+      type: <<type>>
+      example: <<itemExample>>
+  responses:
+    201:
+      body:
+        application/json:
+          #type: <<resourcePathName|!singularize>>.<<resourcePathName|!singularize>>
+          type: <<type>>
+          example: <<itemExample>>
+    400:
+      description: Petition error
+    401:
+      description: Unauthorized
+    403:
+      description: Access denied
+    404:
+      description: Not found
+    500:
+      description: Internal server error
+
+put:
+  description: Method not allowed
+  responses:
+    405:
+      description: Method not allowed
+
+patch:
+  description: Method not allowed
+  responses:
+    405:
+      description: Method not allowed
+
+delete:
+  description: Method not allowed
+  responses:
+    405:
+      description: Method not allowed

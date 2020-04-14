@@ -1,0 +1,151 @@
+#%RAML 1.0
+title: WalletRecargas
+version: v0
+baseUri: http://api.walletgft.com
+
+uses:
+  _common: types/_common.raml
+  provider: types/provider.raml
+  bank: types/bank.raml
+  recharge: types/recharge.raml
+  phone: types/phone.raml
+
+resourceTypes:
+  collection: !include resourceTypes/collection.raml
+  collection-item: !include resourceTypes/collection-item.raml
+
+traits:
+  searchable: !include traits/searchable.raml
+  pageable: !include traits/pageable.raml
+  sortable: !include traits/sortable.raml
+
+/client:
+  /{client-id}:
+    /accounts:
+        description: Collection of accounts of a client
+        get:
+          description: get a list of all of the accounts associated with a client
+          responses:
+            200:
+              body:
+                application/json:
+                  example: |
+                    {
+                    "accounts": [
+                      {
+                        "accountId": "9685",
+                        "clabe": "452565296552854125"
+                      },
+                      {
+                        "accountId": "5454",
+                        "clabe": "774854185419566566"
+                      },
+                      {
+                        "accountId": "5415",
+                        "clabe": "744521654156156651"
+                      }
+                    ]
+                    }
+
+        post:
+          description: associate a bank an a clabe number to a client account
+          queryParameters:
+            banco:
+              description: Bank associated to the account of the client
+              required: true
+              minLength: 10
+              type: string
+              example: "Bancomer BBVA"
+            clabe:
+              description: clabe number associated to the accoutn of the client
+              required: true
+              minLength: 18
+              type: string
+              example: "532488613284563125"
+        /{cuenta}:
+          get:
+            description: retrieve a single account by its id
+    /recharges:
+      description: |
+        Recurso usado para todas las recargas hechas.
+      get:
+        description: |
+          Obtener informacion acerca de todas las recargas hechas.
+        responses:
+          200:
+            body:
+              application/json:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items: recharge.Recharge
+                example: !include examples/recharges/get_200.json
+      /{operation-id}:
+        description: |
+          Recurso usado para una sola recarga hecha.
+        get:
+          description: |
+            Obtener el detalle acerca de una sola recarga.
+          responses:
+            200:
+              body:
+                application/json:
+                  type: recharge.Recharge
+                  example: !include examples/recharge/get_200.json
+        post:
+          description: |
+            Permite agregar una recarga.
+          body:
+            application/json:
+              type: recharge.Recharge
+              example: !include examples/recharge/post_201.json
+          responses:
+            201:
+              body:
+                application/json:
+                  example: |
+                    {"message": "La recarga se realizo con exito"}
+
+/banks:
+  type:
+    collection:
+      type: bank.Bank
+      collectionExample: !include examples/bank/banks.json
+      itemExample: !include examples/bank/bank.json
+  get:
+    is: [pageable, sortable:{fieldsList: "name"}, searchable: {description: "with valid searchable fields: id, name", example: "[\"name\", \"Santan\", \"like\"]"}]
+
+  /{bank-id}:
+    type:
+      collection-item:
+        itemExample: !include examples/bank/bank.json
+        type: bank.Bank
+        updateExample: !include examples/bank/bank.json
+    uriParameters:
+      bank-id:
+        type: _common.id
+        description: |
+          Bank Identifier.
+
+
+/providers:
+  type:
+    collection:
+      type: provider.Provider
+      collectionExample: !include examples/provider/providers.json
+      itemExample: !include examples/provider/provider.json
+  get:
+    is: [pageable, sortable:{fieldsList: "name"}, searchable: {description: "with valid searchable fields: id, name", example: "[\"name\", \"Santan\", \"like\"]"}]
+
+  /{provider-id}:
+    type:
+      collection-item:
+        type: provider.Provider
+        itemExample: !include examples/provider/provider.json
+        updateExample: !include examples/provider/provider.json
+    uriParameters:
+      provider-id:
+        type: _common.id
+        description: |
+          Provider identifier.

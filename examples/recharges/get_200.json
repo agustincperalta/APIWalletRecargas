@@ -1,0 +1,62 @@
+{
+  "data":
+  [
+   {
+     "id": 13254652,
+     "date": "2019-02-01",
+     "status": "COMPLETED",
+     "account":{
+
+     },
+     "amount": 13.00,
+     "currency": "MXN",
+     "phone": {
+       "id": 12343,
+       "numero": "5523983456",
+       "provider": {
+         "id": 123,
+         "name": "Movistar",
+         "amounts": [10,20,100,200]
+       }
+     }
+   },
+   {
+     "id": 15431,
+     "date": "2015-02-21",
+     "status": "COMPLETED",
+     "account":{
+
+     },
+     "amount": 15.50,
+     "currency": "EUR",
+     "phone": {
+       "id": 1012,
+       "numero": "5521900421",
+       "provider": {
+         "id": 1123,
+         "name": "Unefon",
+         "amounts": [10,20,40,50]
+       }
+     }
+   },
+   {
+     "id": 5322245,
+     "date": "2018-12-11",
+     "status": "CANCELED",
+     "account":{
+
+     },
+     "amount": 100.00,
+     "currency": "USD",
+     "phone": {
+       "id": 12799,
+       "numero": "5512334367",
+       "provider": {
+         "id": 223,
+         "name": "AT&T",
+         "amounts": [100,200,500]
+       }
+     }
+   }
+  ]
+}
