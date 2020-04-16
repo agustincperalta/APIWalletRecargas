@@ -1,5 +1,25 @@
 #%RAML 1.0 Library
 
+uses:
+  provider: provider.raml
+
 types:
-    Phone:
-        type: object
+  Phone:
+    type: object
+	  properties:
+	    id:
+	      type: integer        
+		  description: |
+		    Phone Identifier.
+		  required: false
+	    number:
+		  type: string
+		  minLength: 10
+		  description: |
+			Phone Number.
+		  required: true   
+		provider:
+		  type: provider.Provider
+		  description: |
+		    Proveedora de servicios.
+		  required: true
